@@ -1,3 +1,6 @@
+Make sure you have Play 1.2.3 installed.
+
+
 Run Locally
 -----------
 
