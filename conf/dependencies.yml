@@ -1,0 +1,5 @@
+# Application dependencies
+
+require:
+    - play
+    - com.amazonaws -> aws-java-sdk 1.2.7

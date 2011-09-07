@@ -1,0 +1,5 @@
+<ul>
+#{list docs, as:'doc'}
+   <li><a href="downloadFile?id=${doc.id}">${doc.fileName} - <i>${doc.comment}</i></li>
+#{/list}
+</ul>
