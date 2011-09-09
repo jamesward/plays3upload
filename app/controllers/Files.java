@@ -1,43 +1,31 @@
 package controllers;
 
-import java.util.List;
-import java.util.UUID;
 import java.io.File;
-
-import play.mvc.Controller;
-
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.services.s3.AmazonS3Client;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.Bucket;
-import com.amazonaws.services.s3.model.S3Object;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.List;
 
 import models.Document;
+import play.libs.MimeTypes;
+import play.mvc.Controller;
+import s3.storage.S3Blob;
 
 public class Files extends Controller
 {
-
-  static final String BUCKET_NAME = "com.jamesward.plays3upload";
-  static AmazonS3 s3Client;
-
-  static
-  {
-    AWSCredentials awsCredentials = new BasicAWSCredentials(System.getenv("AWS_ACCESS_KEY"), System.getenv("AWS_SECRET_KEY"));
-    s3Client = new AmazonS3Client(awsCredentials);
-    s3Client.createBucket(BUCKET_NAME);
-  }
 
   public static void uploadForm()
   {
     render();
   }
 
-  public static void doUpload(String comment, File attachment)
+  public static void doUpload(File file, String comment) throws FileNotFoundException
   {
-    String s3Key = UUID.randomUUID().toString();
-    s3Client.putObject(BUCKET_NAME, s3Key, attachment);
-    Document doc = new Document(comment, s3Key, attachment.getName());
+	final Document doc = new Document();
+    doc.fileName = file.getName();
+    doc.comment = comment;
+    doc.file = new S3Blob();
+    doc.file.set(new FileInputStream(file), MimeTypes.getContentType(file.getName()));
+    
     doc.save();
     listUploads();
   }
@@ -51,9 +39,9 @@ public class Files extends Controller
   public static void downloadFile(long id)
   {
     final Document doc = Document.findById(id);
-    S3Object s3Object = s3Client.getObject(BUCKET_NAME, doc.s3Key);
-    response.setContentTypeIfNotSet(s3Object.getObjectMetadata().getContentType());
-    renderBinary(s3Object.getObjectContent(), doc.fileName);
+    notFoundIfNull(doc);
+    response.setContentTypeIfNotSet(doc.file.type());
+    renderBinary(doc.file.get(), doc.fileName);
   }
 
 }
