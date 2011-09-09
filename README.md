@@ -20,6 +20,8 @@ Set the AWS environment vars
 
     export AWS_ACCESS_KEY="YOUR_AWS_ACCESS_KEY"
     export AWS_SECRET_KEY="YOUR_AWS_SECRET_KEY"
+    export S3_BUCKET="AN_AWS_UNIQUE_BUCKET_ID"
+
 
 Use a local postgresql database:
 
@@ -49,8 +51,7 @@ Create the app on Heroku
 
 Set the AWS environment vars on Heroku
 
-    heroku config:add AWS_ACCESS_KEY="YOUR_AWS_ACCESS_KEY"
-    heroku config:add AWS_SECRET_KEY="YOUR_AWS_SECRET_KEY"
+    heroku config:add AWS_ACCESS_KEY="YOUR_AWS_ACCESS_KEY" AWS_SECRET_KEY="YOUR_AWS_SECRET_KEY" S3_BUCKET="AN_AWS_UNIQUE_BUCKET_ID"
 
 Upload the app to Heroku
 
