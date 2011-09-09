@@ -1,0 +1,9 @@
+.classpath
+.project
+.settings
+dev.env
+
+data/
+eclipse/
+lib/
+tmp/
