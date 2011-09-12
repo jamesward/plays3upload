@@ -20,7 +20,7 @@ public class Files extends Controller
 
   public static void doUpload(File file, String comment) throws FileNotFoundException
   {
-	final Document doc = new Document();
+    final Document doc = new Document();
     doc.fileName = file.getName();
     doc.comment = comment;
     doc.file = new S3Blob();
