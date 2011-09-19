@@ -22,11 +22,6 @@ Set the AWS environment vars
     export AWS_SECRET_KEY="YOUR_AWS_SECRET_KEY"
     export S3_BUCKET="AN_AWS_UNIQUE_BUCKET_ID"
 
-
-Use a local postgresql database:
-
-    export DATABASE_URL=postgres://foo:foo@localhost/helloheroku
-
 Or switch to the in-memory database by updating the conf/application.conf file
 
 Run the app
