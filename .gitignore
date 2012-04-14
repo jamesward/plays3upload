@@ -1,9 +1,6 @@
-.classpath
-.project
-.settings
-dev.env
-
-data/
-eclipse/
-lib/
-tmp/
+/lib
+/modules
+/plays3upload.iml
+/plays3upload.ipr
+/plays3upload.iws
+/tmp

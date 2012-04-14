@@ -1,5 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Uploads</title>
+</head>
+<body>
 <ul>
 #{list docs, as:'doc'}
    <li><a href="downloadFile?id=${doc.id}">${doc.fileName} - <i>${doc.comment}</i></li>
 #{/list}
 </ul>
+</body>
+</html>

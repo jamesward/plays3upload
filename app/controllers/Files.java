@@ -7,8 +7,8 @@ import java.util.List;
 
 import models.Document;
 import play.libs.MimeTypes;
+import play.modules.s3blobs.S3Blob;
 import play.mvc.Controller;
-import s3.storage.S3Blob;
 
 public class Files extends Controller
 {

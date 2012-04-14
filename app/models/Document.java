@@ -3,7 +3,7 @@ package models;
 import javax.persistence.Entity;
 
 import play.db.jpa.Model;
-import s3.storage.S3Blob;
+import play.modules.s3blobs.S3Blob;
 
 @Entity
 public class Document extends Model
