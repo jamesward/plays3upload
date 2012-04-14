@@ -14,7 +14,7 @@ Move to the project dir
 
 Download the Play! Deps
 
-    play deps
+    play deps --sync
 
 Set the AWS environment vars
 
