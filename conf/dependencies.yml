@@ -1,7 +1,7 @@
 # Application dependencies
 
 require:
-    - play
+    - play 1.4.5
     - localModule -> s3blobs 0.3
     - github -> s3blobs 0.3
 
