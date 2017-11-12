@@ -1,5 +1,18 @@
 # Application dependencies
 
 require:
-    - play 1.2.4
-    - play -> s3blobs 0.1
+    - play
+    - localModule -> s3blobs 0.3
+    - github -> s3blobs 0.3
+
+repositories:
+    - localModule:
+        type: local
+        artifact: "${application.path}/../S3-Blobs-module-for-Play/dist/[module]-[revision].zip"
+        contains:
+            - localModule -> *
+    - github:
+        type: http
+        artifact: "https://raw.githubusercontent.com/jamesward/S3-Blobs-module-for-Play/master/dist/[module]-[revision].zip"
+        contains:
+            - github -> *
